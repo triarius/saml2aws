@@ -17,11 +17,21 @@ type KeyringHelper struct {
 
 func NewKeyringHelper() (*KeyringHelper, error) {
 	kr, err := keyring.Open(keyring.Config{
-		AllowedBackends: []keyring.BackendType{
-			keyring.KWalletBackend,
-			keyring.SecretServiceBackend,
-			keyring.PassBackend,
-		},
+		AllowedBackends: func() []keyring.BackendType {
+			if keyringBackend := os.Getenv("SAML2AWS_KEYRING_BACKEND"); keyringBackend == "kwallet" {
+				return []keyring.BackendType{keyring.KWalletBackend}
+			} else if keyringBackend == "secret_service" {
+				return []keyring.BackendType{keyring.SecretServiceBackend}
+			} else if keyringBackend == "pass" {
+				return []keyring.BackendType{keyring.PassBackend}
+			} else {
+				return []keyring.BackendType{
+					keyring.KWalletBackend,
+					keyring.SecretServiceBackend,
+					keyring.PassBackend,
+				}
+			}
+		}(),
 		LibSecretCollectionName: "login",
 		PassPrefix:              "saml2aws",
 		PassDir: func() string {
