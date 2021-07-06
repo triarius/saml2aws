@@ -2,6 +2,7 @@ package linuxkeyring
 
 import (
 	"encoding/json"
+	"os"
 
 	"github.com/99designs/keyring"
 	"github.com/sirupsen/logrus"
@@ -19,6 +20,11 @@ type Configuration struct {
 }
 
 func NewKeyringHelper(config Configuration) (*KeyringHelper, error) {
+	passDir := os.Getenv("SAML2AWS_PASSWORD_STORE_DIR")
+	if passDir == "" {
+		passDir = os.Getenv("HOME") + "/.password_store"
+	}
+
 	c := keyring.Config{
 		AllowedBackends: []keyring.BackendType{
 			keyring.KWalletBackend,
@@ -27,6 +33,7 @@ func NewKeyringHelper(config Configuration) (*KeyringHelper, error) {
 		},
 		LibSecretCollectionName: "login",
 		PassPrefix:              "saml2aws",
+		PassDir:                 passDir,
 	}
 
 	// set the only allowed backend to be backend configured
