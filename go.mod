@@ -23,7 +23,7 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/tidwall/gjson v1.13.0
 	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd
-	gopkg.in/ini.v1 v1.66.3
+	gopkg.in/ini.v1 v1.67.0
 )
 
 require (
