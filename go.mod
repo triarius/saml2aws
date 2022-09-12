@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/99designs/keyring v1.1.6
-	github.com/AlecAivazis/survey/v2 v2.3.2
+	github.com/AlecAivazis/survey/v2 v2.3.6
 	github.com/Azure/go-ntlmssp v0.0.0-20211209120228-48547f28849e
 	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/alecthomas/kingpin v2.2.6+incompatible
@@ -48,7 +48,7 @@ require (
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	golang.org/x/crypto v0.0.0-20200323165209-0ec3e9974c59 // indirect
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
+	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
